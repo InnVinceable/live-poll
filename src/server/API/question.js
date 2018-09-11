@@ -4,6 +4,7 @@ module.exports = function(app, data){
     });
     app.post('/question', function(req, res){
         data.question = req.body.question;
+        data.answers = [];
         res.sendStatus(200);
     });
     app.put('/question', function(req, res){

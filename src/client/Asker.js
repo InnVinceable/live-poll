@@ -1,5 +1,6 @@
 import React from 'react';
-import { VictoryBar, VictoryChart, VictoryAxis } from 'victory';
+import { VictoryBar, VictoryChart, VictoryAxis, VictoryLabel } from 'victory';
+require('./Asker.css')
 
 class Asker extends React.Component {
     constructor(props) {
@@ -10,9 +11,11 @@ class Asker extends React.Component {
         this.aggregateAnswerData = this.aggregateAnswerData.bind(this);
         this.getAnswers = this.getAnswers.bind(this);
         this.state = {
-            questionData: [
-                {category: "YES", count: 123},
-                {category: "NO", count: 200}
+            yesData: [
+                {category: "YES", count: 0}
+            ],
+            noData: [
+                {category: "NO", count: 0}
             ]
         };
     }
@@ -46,8 +49,12 @@ class Asker extends React.Component {
             if (element == "NO") nos++;
         });
         this.setState({
-            questionData: [
-                {category: "YES", count: yeses},
+            yesData: [
+                {category: "YES", count: yeses}
+            ]
+        });
+        this.setState({
+            noData: [
                 {category: "NO", count: nos}
             ]
         });
@@ -68,27 +75,42 @@ class Asker extends React.Component {
             <div>
                 <br />
                 <br />
-                {!this.state.submitted && <div className="row">
-                    <input className="col-xs-8 col-xs-offset-2 input-lg" type="text" value={this.state.question} onChange={this.handleTextInputChange} />
-                </div>}
+                {!this.state.submitted && <div>
+                    <div className="row">
+                        <label for="inp" class="col-xs-8 col-xs-offset-2 inp" >
+                            <input type="text" id="inp" placeholder="&nbsp;" value={this.state.question} onChange={this.handleTextInputChange} />
+                            <span class="label">Question</span>
+                            <span class="border"></span>
+                        </label>
+                    </div>
+                    <div className="row">
+                        <button className="col-xs-2 col-xs-offset-5 btn btn-lg btn-info" onClick={this.handleSubmit}>Submit</button>
+                    </div>
+                </div>
+                }
                 {this.state.submitted && <div className="row">
                     <h2 className="col-xs-8 col-xs-offset-2 text-center">{this.state.question}</h2>
                 </div>}
                 <br />
-                {!this.state.submitted && <div className="row">
-                    <button className="col-xs-2 col-xs-offset-5 btn btn-lg btn-info" onClick={this.handleSubmit}>Submit</button>
-                </div>}
                 {this.state.submitted && <div className="row">
-                    <button className="col-xs-2 col-xs-offset-5 btn btn-lg btn-info" disabled>Submitted</button>
-                </div>}
-                <div className="row">
                     <div className="col-xs-8 col-xs-offset-2">
-                        <VictoryChart domainPadding={80}>
+                        <VictoryChart domainPadding={80} animate={{duration: 500}}>
                             <VictoryAxis tickValues={[1,2]} tickFormat={["YES", "NO"]}/>
-                            <VictoryBar data={this.state.questionData} x="category" y="count"/>
+
+                            <VictoryBar 
+                                style={{ data: { fill: '#66ff4f', width: 50 }}}
+                                data={this.state.yesData} 
+                                x="category" 
+                                y="count"/>
+
+                            <VictoryBar 
+                                style={{ data: { fill: '#ff3535', width: 50 }}} 
+                                data={this.state.noData} 
+                                x="category" 
+                                y="count"/>
                         </VictoryChart>
                     </div>
-                </div>
+                </div>}
             </div>
         );
     }

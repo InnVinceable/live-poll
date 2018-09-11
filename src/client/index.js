@@ -2,12 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Answerer from './Answerer';
 import Asker from './Asker';
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import AskerSecurity from './AskerSecurity';
+import { BrowserRouter, Route, Link } from 'react-router-dom'
 
 ReactDOM.render(
-    <Router>
+    <BrowserRouter>
         <div>
-            <Route path="/answer" component={Answerer}/>
-            <Route path="/" component={Asker}/>
+            <Link to="/Asker"><div className="btn btn-xs btn-info">Ask a question</div></Link>
+            <Route exact path="/" component={Answerer}/>
+            <Route path="/Asker" component={AskerSecurity}/>
+            <Route path="/jfasdneRRinfaisfasdkfjakdsjtkanlsnjdfkjsandlt" component={Asker} />
         </div>
-    </Router>, document.getElementById('root'));
+    </BrowserRouter>, document.getElementById('root'));
