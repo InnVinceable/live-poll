@@ -12,4 +12,5 @@ RUN npm run build
 
 ENV INITSYSTEM on
 
+
 CMD [ "npm", "start" ]
