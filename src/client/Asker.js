@@ -1,5 +1,6 @@
 import React from 'react';
 import { VictoryBar, VictoryChart, VictoryAxis, VictoryLabel } from 'victory';
+import ShortcutButton from './pure-components/shortcut-button';
 require('./styles.css')
 
 class Asker extends React.Component {
@@ -78,13 +79,13 @@ class Asker extends React.Component {
                 {!this.state.submitted && <div>
                     <div className="row">
                         <label for="inp" class="col-xs-8 col-xs-offset-2 inp" >
-                            <input type="text" id="inp" placeholder="&nbsp;" value={this.state.question} onChange={this.handleTextInputChange} />
+                            <input type="text" autoFocus={true}  id="inp" placeholder="&nbsp;" value={this.state.question} onChange={this.handleTextInputChange} />
                             <span class="label">Question</span>
                             <span class="border"></span>
                         </label>
                     </div>
                     <div className="row">
-                        <button className="col-xs-2 col-xs-offset-5 btn btn-xl btn-info raised" onClick={this.handleSubmit}>Submit</button>
+                        <ShortcutButton className="col-xs-2 col-xs-offset-5 btn btn-xl btn-info raised" onClick={this.handleSubmit}>Submit</ShortcutButton>
                     </div>
                 </div>
                 }

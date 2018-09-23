@@ -1,4 +1,5 @@
 import React from 'react';
+import {hotkeys} from 'react-keyboard-shortcuts'
 require('./styles.css')
 
 class Answerer extends React.Component {
@@ -9,6 +10,13 @@ class Answerer extends React.Component {
         this.handleYesClick = this.handleYesClick.bind(this);
         this.handleNoClick = this.handleNoClick.bind(this);
         this.state = {};
+    }
+
+    hot_keys = {
+        'alt+n': {
+          priority: 1,
+          handler: (event) => this.props.history.push('/asker'),
+        },
     }
 
     componentDidMount() {
@@ -46,16 +54,18 @@ class Answerer extends React.Component {
     render() {
         return (
             <div className="flex-center-vertically col-md-offset-2 col-md-8">
-                <h1 className="col-xs-12 text-center">{this.state.question}</h1>
+                {this.state.question === "" && <h1 className="col-xs-12 text-center">No questions asked</h1>}
+                {this.state.question !== "" && <h1 className="col-xs-12 text-center">{this.state.question}</h1>}
+                {this.state.question !== "" && !this.state.error  &&
                 <div className="row">
                     <div className="col-xs-8 col-xs-offset-2">
                         <button onClick={this.handleYesClick} className="col-xs-4 btn btn-xl btn-success raised">YES</button>
                         <button onClick={this.handleNoClick} className="col-xs-4 col-xs-offset-4 btn btn-xl btn-danger raised">NO</button>
                     </div>
-                </div>
+                </div>}
             </div>
         )
     }
 }
 
-export default Answerer;
+export default hotkeys(Answerer);
