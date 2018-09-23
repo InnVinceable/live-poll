@@ -1,6 +1,6 @@
 import React from 'react';
 import { VictoryBar, VictoryChart, VictoryAxis, VictoryLabel } from 'victory';
-require('./Asker.css')
+require('./styles.css')
 
 class Asker extends React.Component {
     constructor(props) {
@@ -72,7 +72,7 @@ class Asker extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="flex-center-vertically col-md-offset-2 col-md-8">
                 <br />
                 <br />
                 {!this.state.submitted && <div>
@@ -84,7 +84,7 @@ class Asker extends React.Component {
                         </label>
                     </div>
                     <div className="row">
-                        <button className="col-xs-2 col-xs-offset-5 btn btn-lg btn-info" onClick={this.handleSubmit}>Submit</button>
+                        <button className="col-xs-2 col-xs-offset-5 btn btn-xl btn-info raised" onClick={this.handleSubmit}>Submit</button>
                     </div>
                 </div>
                 }

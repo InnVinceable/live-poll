@@ -1,6 +1,6 @@
 import React from 'react';
 import { VictoryBar, VictoryChart, VictoryAxis, VictoryLabel } from 'victory';
-require('./Asker.css')
+require('./styles.css')
 
 class AskerSecurity extends React.Component {
     constructor(props) {
@@ -26,7 +26,7 @@ class AskerSecurity extends React.Component {
 
     render() {
         return (
-            <div> 
+            <div className="flex-center-vertically col-md-offset-2 col-md-8"> 
                 <div className="row">
                     <label for="inp" class="col-xs-8 col-xs-offset-2 inp">
                         <input type="password" id="inp" placeholder="&nbsp;" value={this.state.password} onChange={this.handleTextInputChange} />
@@ -34,7 +34,7 @@ class AskerSecurity extends React.Component {
                         <span class="border"></span>
                     </label>
                 </div>
-                <button className="col-xs-2 col-xs-offset-5 btn btn-lg btn-info" onClick={this.handleProceedClick}>Proceed</button>
+                <button className="col-xs-2 col-xs-offset-5 btn btn-xl btn-info raised" onClick={this.handleProceedClick}>Proceed</button>
             </div>
         );
     }

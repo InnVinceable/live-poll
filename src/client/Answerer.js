@@ -1,4 +1,5 @@
 import React from 'react';
+require('./styles.css')
 
 class Answerer extends React.Component {
     constructor (props) {
@@ -44,12 +45,12 @@ class Answerer extends React.Component {
 
     render() {
         return (
-            <div>
-                <h1>{this.state.question}</h1>
+            <div className="flex-center-vertically col-md-offset-2 col-md-8">
+                <h1 className="col-xs-12 text-center">{this.state.question}</h1>
                 <div className="row">
-                    <div className="btn-group col-xs-4 col-xs-offset-4">
-                        <button onClick={this.handleYesClick} className="col-xs-6 btn btn-lg btn-success">YES</button>
-                        <button onClick={this.handleNoClick} className="col-xs-6 btn btn-lg btn-danger">NO</button>
+                    <div className="col-xs-8 col-xs-offset-2">
+                        <button onClick={this.handleYesClick} className="col-xs-4 btn btn-xl btn-success raised">YES</button>
+                        <button onClick={this.handleNoClick} className="col-xs-4 col-xs-offset-4 btn btn-xl btn-danger raised">NO</button>
                     </div>
                 </div>
             </div>
