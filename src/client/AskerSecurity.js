@@ -17,7 +17,6 @@ class AskerSecurity extends React.Component {
     }
 
     handleProceedClick() {
-        debugger;
         if (this.state.password == "devday")
         {
             this.props.history.push('/jfasdneRRinfaisfasdkfjakdsjtkanlsnjdfkjsandlt');

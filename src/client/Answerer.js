@@ -9,14 +9,22 @@ class Answerer extends React.Component {
         this.postAnswer = this.postAnswer.bind(this);
         this.handleYesClick = this.handleYesClick.bind(this);
         this.handleNoClick = this.handleNoClick.bind(this);
+        this.redirectToThankYou = this.redirectToThankYou.bind(this);
         this.state = {};
     }
 
     hot_keys = {
         'alt+n': {
           priority: 1,
-          handler: (event) => this.props.history.push('/asker'),
+          handler: (event) => this.props.history.push('/Asker'),
         },
+    }
+
+    redirectToThankYou(ans) {
+        this.props.history.state = {
+            answer: ans
+        }
+        this.props.history.push("/Thanks")
     }
 
     componentDidMount() {
@@ -45,10 +53,12 @@ class Answerer extends React.Component {
 
     handleYesClick() {
         this.postAnswer('YES');
+        this.redirectToThankYou("Yes");
     }
 
     handleNoClick() {
         this.postAnswer('NO');
+        this.redirectToThankYou("No");
     }
 
     render() {
@@ -56,6 +66,8 @@ class Answerer extends React.Component {
             <div className="flex-center-vertically col-md-offset-2 col-md-8">
                 {this.state.question === "" && <h1 className="col-xs-12 text-center">No questions asked</h1>}
                 {this.state.question !== "" && <h1 className="col-xs-12 text-center">{this.state.question}</h1>}
+                <br />
+                <br />
                 {this.state.question !== "" && !this.state.error  &&
                 <div className="row">
                     <div className="col-xs-8 col-xs-offset-2">

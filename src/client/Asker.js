@@ -97,7 +97,6 @@ class Asker extends React.Component {
                     <div className="col-xs-8 col-xs-offset-2">
                         <VictoryChart domainPadding={80} animate={{duration: 500}}>
                             <VictoryAxis tickValues={[1,2]} tickFormat={["YES", "NO"]}/>
-
                             <VictoryBar 
                                 style={{ data: { fill: '#66ff4f', width: 50 }}}
                                 data={this.state.yesData} 
