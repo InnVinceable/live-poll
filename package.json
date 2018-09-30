@@ -13,6 +13,7 @@
   "author": "Vincent de Gois",
   "license": "ISC",
   "dependencies": {
+    "aws-iot-device-sdk": "^2.2.1",
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
     "express-ws": "^4.0.0",
